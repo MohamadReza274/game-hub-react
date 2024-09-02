@@ -1,32 +1,9 @@
-import {useEffect, useState} from "react";
-import apiClient from "@/services/api-client.ts";
+import {Game, useGames} from "@/hooks/useGames.tsx";
 
-interface Game {
-    id: number;
-    name: string;
-}
-
-interface GameResponse {
-    count: number;
-    results: Game[];
-}
 
 const GameContainer = () => {
 
-    const [games, setGames] = useState<Game[]>([]);
-    const [error, setError] = useState("");
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        apiClient.get<GameResponse>("/games").then(res => {
-            setGames(res.data.results);
-        })
-            .catch(error => {
-                setError(error.message);
-            }).finally(() => {
-                setLoading(false);
-        })
-    }, [])
+    const {games, loading, error} = useGames()
 
     console.log(games);
 
