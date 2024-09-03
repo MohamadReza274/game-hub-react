@@ -12,11 +12,12 @@ export interface Game {
     id: number;
     name: string;
     background_image: string;
-    parent_platforms: { platform: Platform }[]
+    parent_platforms: { platform: Platform }[];
+    metacritic:number;
 }
 
 
-interface GameResponse {
+interface GameResponseType {
     count: number;
     results: Game[];
 }
@@ -32,8 +33,7 @@ export const useGames = () => {
     useEffect(() => {
 
         const controller = new AbortController();
-
-        apiClient.get<GameResponse>("/games", {signal: controller.signal}).then(res => {
+        apiClient.get<GameResponseType>("/games", {signal: controller.signal}).then(res => {
             setGames(res.data.results);
             setGamesCount(res.data.count);
         })

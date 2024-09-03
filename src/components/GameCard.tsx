@@ -1,6 +1,7 @@
 import {Game} from "@/hooks/useGames.tsx";
 import {Card, CardFooter, CardHeader} from "@/components/ui/card.tsx";
 import GamePlatformIcons from "@/components/GamePlatformIcons.tsx";
+import CriticScore from "@/components/CriticScore.tsx";
 
 interface GameProps {
     game: Game;
@@ -13,13 +14,13 @@ const GameCard = ({game}: GameProps) => {
             <CardHeader>
                 <h2 className={"text-2xl"}>{game.name}</h2>
             </CardHeader>
-            <CardFooter>
-                {game.parent_platforms?.map(({platform}) => {
-
-                    return <div className={'flex mx-1 text-gray-500'}>
-                        <GamePlatformIcons key={platform.id} platform={platform}/>
-                    </div>
-                })}
+            <CardFooter className={"flex justify-between"}>
+                <div className={'flex mx-1 text-gray-500 gap-x-2'}>
+                    {game.parent_platforms?.map(({platform}) => {
+                        return <GamePlatformIcons key={platform.id} platform={platform}/>
+                    })}
+                </div>
+                <CriticScore score={game.metacritic}/>
             </CardFooter>
             <CardFooter className="flex justify-between">
 
