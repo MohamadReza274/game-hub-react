@@ -1,5 +1,6 @@
 import {Game} from "@/hooks/useGames.tsx";
 import {Card, CardFooter, CardHeader} from "@/components/ui/card.tsx";
+import GamePlatformIcons from "@/components/GamePlatformIcons.tsx";
 
 interface GameProps {
     game: Game;
@@ -12,6 +13,14 @@ const GameCard = ({game}: GameProps) => {
             <CardHeader>
                 <h2 className={"text-2xl"}>{game.name}</h2>
             </CardHeader>
+            <CardFooter>
+                {game.parent_platforms?.map(({platform}) => {
+
+                    return <div className={'flex mx-1 text-gray-500'}>
+                        <GamePlatformIcons key={platform.id} platform={platform}/>
+                    </div>
+                })}
+            </CardFooter>
             <CardFooter className="flex justify-between">
 
             </CardFooter>
