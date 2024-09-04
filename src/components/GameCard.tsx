@@ -1,4 +1,4 @@
-import {Game} from "@/hooks/useGames.tsx";
+import {Game} from "@/hooks/useGames.ts";
 import {Card, CardFooter, CardHeader} from "@/components/ui/card.tsx";
 import GamePlatformIcons from "@/components/GamePlatformIcons.tsx";
 import CriticScore from "@/components/CriticScore.tsx";
