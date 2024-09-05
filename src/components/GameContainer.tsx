@@ -1,11 +1,15 @@
 import useGames, {Game} from "@/hooks/useGames.ts";
 import GameCard from "@/components/GameCard.tsx";
 import {Skeleton} from "@/components/ui/skeleton.tsx";
+import {Genre} from "@/hooks/useGenres.ts";
 
+interface Props {
+    selectGenre: Genre | null;
+}
 
-const GameContainer = () => {
+const GameContainer = ({selectGenre}: Props) => {
 
-    const {data: games, isLoading, error} = useGames()
+    const {data: games, isLoading, error} = useGames(selectGenre)
 
     return (
         <div>

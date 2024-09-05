@@ -3,8 +3,20 @@ import "./app.css"
 import {ThemeProvider} from "@/components/theme-provider.tsx";
 import GameContainer from "@/components/GameContainer.tsx";
 import GenreList from "@/components/GenreList.tsx";
+import {useEffect, useState} from "react";
+import {Genre} from "@/hooks/useGenres.ts";
 
 function App() {
+
+    const [selectGenre, setSelectedGenre] = useState<Genre | null>(null);
+
+    // const handleSelectGenre = (genre: Genre) => {
+    //     setSelectedGenre(genre);
+    // }
+
+    useEffect(() => {
+        console.log("Hello")
+    }, [selectGenre]);
 
     return (
         <ThemeProvider>
@@ -13,10 +25,10 @@ function App() {
                     <Navbar/>
                 </nav>
                 <aside className={" sidebar"}>
-                    <GenreList/>
+                    <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)}/>
                 </aside>
                 <main className={"main"}>
-                    <GameContainer/>
+                    <GameContainer selectGenre={selectGenre}/>
                 </main>
             </div>
         </ThemeProvider>
