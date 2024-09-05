@@ -5,6 +5,7 @@ import GameContainer from "@/components/GameContainer.tsx";
 import GenreList from "@/components/GenreList.tsx";
 import {useEffect, useState} from "react";
 import {Genre} from "@/hooks/useGenres.ts";
+import FilteringByPlatform from "@/components/FilteringByPlatform.tsx";
 
 function App() {
 
@@ -28,6 +29,9 @@ function App() {
                     <GenreList selectedGenre={selectGenre} onSelectGenre={(genre) => setSelectedGenre(genre)}/>
                 </aside>
                 <main className={"main"}>
+                    <div>
+                        <FilteringByPlatform/>
+                    </div>
                     <GameContainer selectGenre={selectGenre}/>
                 </main>
             </div>
