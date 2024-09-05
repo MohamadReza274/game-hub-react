@@ -25,7 +25,7 @@ function App() {
                     <Navbar/>
                 </nav>
                 <aside className={" sidebar"}>
-                    <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)}/>
+                    <GenreList selectedGenre={selectGenre} onSelectGenre={(genre) => setSelectedGenre(genre)}/>
                 </aside>
                 <main className={"main"}>
                     <GameContainer selectGenre={selectGenre}/>
