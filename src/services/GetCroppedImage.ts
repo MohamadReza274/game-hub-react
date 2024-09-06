@@ -1,7 +1,9 @@
+import NoImage from '../assets/no-image.jpg'
+
 const getCroppedImage = (imageUrl: string) => {
 
     if (!imageUrl) {
-        return null;
+        return NoImage;
     }
 
     const target = "media/";

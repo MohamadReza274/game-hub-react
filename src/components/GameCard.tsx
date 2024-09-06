@@ -12,7 +12,7 @@ const GameCard = ({game}: GameProps) => {
     return (
         <Card className="w-[350px] overflow-hidden transform transition-transform delay-75 ease-in-out hover:scale-105">
             <a href={"#"}>
-                <img className={"w-full"} src={getCroppedImage(game.background_image)} alt={"Game Image"}/>
+                <img className={"w-full max-h-[250px] h-full"} src={getCroppedImage(game.background_image)} alt={"Game Image"}/>
             </a>
             <CardHeader>
                 <h2 className={"text-2xl"}>{game.name}</h2>
