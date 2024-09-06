@@ -7,11 +7,12 @@ import {Platform} from "@/hooks/usePlatforms.ts";
 interface Props {
     selectGenre: Genre | null;
     selectPlatform: Platform | null;
+    selectSortOrder: string | null;
 }
 
-const GameContainer = ({selectGenre, selectPlatform}: Props) => {
+const GameContainer = ({selectGenre, selectPlatform, selectSortOrder}: Props) => {
 
-    const {data: games, isLoading, error} = useGames(selectGenre, selectPlatform)
+    const {data: games, isLoading, error} = useGames(selectGenre, selectPlatform, selectSortOrder)
 
     return (
         <div>

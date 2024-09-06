@@ -8,18 +8,32 @@ import {
     SelectValue
 } from "@/components/ui/select.tsx";
 
-const sortOptions = ["Relevance", "Date Added", "Name", "Release Date", "Popularity", "Average rating"]
+const sortOptions = [
+    {value: "_", label: "Relevance"},
+    {value: "-added", label: "Date Added"},
+    {value: "name", label: "Name"},
+    {value: "-released", label: "Release Date"},
+    {value: "-metacritic", label: "Popularity"},
+    {value: "-rating", label: "Average rating"}
+]
 
-const SortGames = () => {
+interface Props {
+    onSelectedSortOrder: (sort: string) => void;
+}
+
+const SortGames = ({onSelectedSortOrder}: Props) => {
     return (
-        <Select>
+        <Select onValueChange={(value) => {
+            onSelectedSortOrder(value)
+        }}>
             <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Sort by"/>
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup>
                     <SelectLabel>Sort Options</SelectLabel>
-                    {sortOptions.map((sort) => (<SelectItem value={sort.toLowerCase()}>{sort}</SelectItem>))}
+                    {sortOptions.map((sort) => (
+                        <SelectItem value={sort.value}>{sort.label}</SelectItem>))}
                 </SelectGroup>
             </SelectContent>
         </Select>

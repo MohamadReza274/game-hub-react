@@ -13,6 +13,7 @@ function App() {
 
     const [selectGenre, setSelectedGenre] = useState<Genre | null>(null);
     const [selectPlatform, setSelectPlatform] = useState<Platform | null>(null);
+    const [selectSortOrder, setSelectSortOrder] = useState<string | null>(null);
 
     return (
         <ThemeProvider>
@@ -26,9 +27,9 @@ function App() {
                 <main className={"main"}>
                     <div className={"py-4 sm:px-24 flex gap-x-6"}>
                         <FilteringByPlatform onSelectPlatform={(platform) => setSelectPlatform(platform)}/>
-                        <SortGames/>
+                        <SortGames onSelectedSortOrder={(value) => setSelectSortOrder(value)}/>
                     </div>
-                    <GameContainer selectPlatform={selectPlatform} selectGenre={selectGenre}/>
+                    <GameContainer selectSortOrder={selectSortOrder} selectPlatform={selectPlatform} selectGenre={selectGenre}/>
                 </main>
             </div>
         </ThemeProvider>
