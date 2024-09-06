@@ -7,13 +7,12 @@ import {useState} from "react";
 import {Genre} from "@/hooks/useGenres.ts";
 import FilteringByPlatform from "@/components/FilteringByPlatform.tsx";
 import {Platform} from "@/hooks/usePlatforms.ts";
+import SortGames from "@/components/SortGames.tsx";
 
 function App() {
 
     const [selectGenre, setSelectedGenre] = useState<Genre | null>(null);
     const [selectPlatform, setSelectPlatform] = useState<Platform | null>(null);
-
-    console.log("App Components", selectPlatform);
 
     return (
         <ThemeProvider>
@@ -25,8 +24,9 @@ function App() {
                     <GenreList selectedGenre={selectGenre} onSelectGenre={(genre) => setSelectedGenre(genre)}/>
                 </aside>
                 <main className={"main"}>
-                    <div>
+                    <div className={"py-4 sm:px-24 flex gap-x-6"}>
                         <FilteringByPlatform onSelectPlatform={(platform) => setSelectPlatform(platform)}/>
+                        <SortGames/>
                     </div>
                     <GameContainer selectPlatform={selectPlatform} selectGenre={selectGenre}/>
                 </main>

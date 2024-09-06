@@ -1,15 +1,14 @@
 import usePlatforms, {Platform} from "@/hooks/usePlatforms.ts";
 import Spinner from "@/components/Spinner.tsx";
-import {Button} from "@/components/ui/button.tsx";
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuLabel,
-    DropdownMenuRadioGroup,
-    DropdownMenuRadioItem,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu.tsx";
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue
+} from "@/components/ui/select.tsx";
 
 interface Props {
     onSelectPlatform: (platform: Platform) => void;
@@ -24,21 +23,28 @@ const FilteringByPlatform = ({onSelectPlatform}: Props) => {
     }
     if (error) return null;
 
+    const handleChangePlatform = (value: number) => {
+        platforms.filter(platform => platform.id == value).map(p => {
+            onSelectPlatform(p);
+        });
+
+    }
+
     return (
-        <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-                <Button variant="outline" className={"min-w-[200px]"} >Select Platform</Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56">
-                <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
-                <DropdownMenuSeparator/>
-                <DropdownMenuRadioGroup>
-                    {platforms?.map((platform: Platform) => (
-                        <DropdownMenuRadioItem onClick={() => onSelectPlatform(platform)} key={platform.id}
-                                               value={platform.slug}>{platform.name}</DropdownMenuRadioItem>))}
-                </DropdownMenuRadioGroup>
-            </DropdownMenuContent>
-        </DropdownMenu>
+        <Select onValueChange={(value) => {
+            handleChangePlatform(parseInt(value));
+        }}>
+            <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Select a Platform"/>
+            </SelectTrigger>
+            <SelectContent>
+                <SelectGroup>
+                    <SelectLabel>Platforms</SelectLabel>
+                    {platforms.map((platform) => (
+                        <SelectItem key={platform.id} value={platform.id.toString()}>{platform.name}</SelectItem>))}
+                </SelectGroup>
+            </SelectContent>
+        </Select>
     );
 };
 

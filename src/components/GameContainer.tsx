@@ -11,8 +11,6 @@ interface Props {
 
 const GameContainer = ({selectGenre, selectPlatform}: Props) => {
 
-    console.log(selectGenre);
-
     const {data: games, isLoading, error} = useGames(selectGenre, selectPlatform)
 
     return (
@@ -25,8 +23,12 @@ const GameContainer = ({selectGenre, selectPlatform}: Props) => {
                 </div>))}
             </div>
             {error && <p className={"text-red-500 text-2xl p-2"}>{error}</p>}
-            <div className={"flex flex-col items-center sm:flex-row sm:justify-center flex-wrap gap-4 p-4"}>
-                {games.map((game: Game) => <GameCard key={game.id} game={game}/>)}
+            <div className={"flex flex-col items-center sm:flex-row sm:justify-center flex-wrap gap-4"}>
+
+                {
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-expect-error
+                    games.map((game: Game) => (<GameCard game={game}/>))}
             </div>
         </div>
     );
