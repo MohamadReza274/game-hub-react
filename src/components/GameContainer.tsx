@@ -8,11 +8,12 @@ interface Props {
     selectGenre: Genre | null;
     selectPlatform: Platform | null;
     selectSortOrder: string | null;
+    searchGames:string | null;
 }
 
-const GameContainer = ({selectGenre, selectPlatform, selectSortOrder}: Props) => {
+const GameContainer = ({selectGenre, selectPlatform, selectSortOrder,searchGames}: Props) => {
 
-    const {data: games, isLoading, error} = useGames(selectGenre, selectPlatform, selectSortOrder)
+    const {data: games, isLoading, error} = useGames(selectGenre, selectPlatform, selectSortOrder,searchGames)
 
     return (
         <div>
@@ -29,7 +30,7 @@ const GameContainer = ({selectGenre, selectPlatform, selectSortOrder}: Props) =>
                 {
                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-expect-error
-                    games.map((game: Game) => (<GameCard game={game}/>))}
+                    games.map((game: Game) => (<GameCard key={game.id} game={game}/>))}
             </div>
         </div>
     );

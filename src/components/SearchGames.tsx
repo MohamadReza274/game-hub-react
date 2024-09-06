@@ -1,8 +1,23 @@
 import {Input} from "@/components/ui/input.tsx";
+import {useRef} from "react";
 
-const SearchGames = () => {
+interface Props {
+    onSearchGames: (value: string) => void;
+}
+
+const SearchGames = ({onSearchGames}: Props) => {
+    const inputRef = useRef<HTMLInputElement>(null);
+
     return (
-        <Input className={'max-w-3xl w-full'} placeholder={"Search... "} name={"search"} type={"search"}/>
+        <form className="w-full" onSubmit={(e) => {
+            e.preventDefault()
+            if (inputRef.current) {
+                onSearchGames(inputRef.current.value);
+            }
+        }}>
+            <Input ref={inputRef} className={'max-w-3xl w-full'} placeholder={"Search... "} name={"search"}
+                   type={"search"}/>
+        </form>
     );
 };
 

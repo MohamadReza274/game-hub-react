@@ -33,7 +33,7 @@ const SortGames = ({onSelectedSortOrder}: Props) => {
                 <SelectGroup>
                     <SelectLabel>Sort Options</SelectLabel>
                     {sortOptions.map((sort) => (
-                        <SelectItem value={sort.value}>{sort.label}</SelectItem>))}
+                        <SelectItem key={sort.label} value={sort.value}>{sort.label}</SelectItem>))}
                 </SelectGroup>
             </SelectContent>
         </Select>

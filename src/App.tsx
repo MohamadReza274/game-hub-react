@@ -14,12 +14,13 @@ function App() {
     const [selectGenre, setSelectedGenre] = useState<Genre | null>(null);
     const [selectPlatform, setSelectPlatform] = useState<Platform | null>(null);
     const [selectSortOrder, setSelectSortOrder] = useState<string | null>(null);
+    const [serachValue, setSearchValue] = useState<string | null>(null);
 
     return (
         <ThemeProvider>
             <div className={'gird-area'}>
                 <nav className="navbar">
-                    <Navbar/>
+                    <Navbar onSearchGames={(value) => setSearchValue(value)}/>
                 </nav>
                 <aside className={" sidebar"}>
                     <GenreList selectedGenre={selectGenre} onSelectGenre={(genre) => setSelectedGenre(genre)}/>
@@ -29,7 +30,8 @@ function App() {
                         <FilteringByPlatform onSelectPlatform={(platform) => setSelectPlatform(platform)}/>
                         <SortGames onSelectedSortOrder={(value) => setSelectSortOrder(value)}/>
                     </div>
-                    <GameContainer selectSortOrder={selectSortOrder} selectPlatform={selectPlatform} selectGenre={selectGenre}/>
+                    <GameContainer searchGames={serachValue} selectSortOrder={selectSortOrder} selectPlatform={selectPlatform}
+                                   selectGenre={selectGenre}/>
                 </main>
             </div>
         </ThemeProvider>
