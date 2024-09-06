@@ -3,21 +3,17 @@ import "./app.css"
 import {ThemeProvider} from "@/components/theme-provider.tsx";
 import GameContainer from "@/components/GameContainer.tsx";
 import GenreList from "@/components/GenreList.tsx";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {Genre} from "@/hooks/useGenres.ts";
 import FilteringByPlatform from "@/components/FilteringByPlatform.tsx";
+import {Platform} from "@/hooks/usePlatforms.ts";
 
 function App() {
 
     const [selectGenre, setSelectedGenre] = useState<Genre | null>(null);
+    const [selectPlatform, setSelectPlatform] = useState<Platform | null>(null);
 
-    // const handleSelectGenre = (genre: Genre) => {
-    //     setSelectedGenre(genre);
-    // }
-
-    useEffect(() => {
-        console.log("Hello")
-    }, [selectGenre]);
+    console.log("App Components", selectPlatform);
 
     return (
         <ThemeProvider>
@@ -30,9 +26,9 @@ function App() {
                 </aside>
                 <main className={"main"}>
                     <div>
-                        <FilteringByPlatform/>
+                        <FilteringByPlatform onSelectPlatform={(platform) => setSelectPlatform(platform)}/>
                     </div>
-                    <GameContainer selectGenre={selectGenre}/>
+                    <GameContainer selectPlatform={selectPlatform} selectGenre={selectGenre}/>
                 </main>
             </div>
         </ThemeProvider>

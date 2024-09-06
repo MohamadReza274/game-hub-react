@@ -2,14 +2,18 @@ import useGames, {Game} from "@/hooks/useGames.ts";
 import GameCard from "@/components/GameCard.tsx";
 import {Skeleton} from "@/components/ui/skeleton.tsx";
 import {Genre} from "@/hooks/useGenres.ts";
+import {Platform} from "@/hooks/usePlatforms.ts";
 
 interface Props {
     selectGenre: Genre | null;
+    selectPlatform: Platform | null;
 }
 
-const GameContainer = ({selectGenre}: Props) => {
+const GameContainer = ({selectGenre, selectPlatform}: Props) => {
 
-    const {data: games, isLoading, error} = useGames(selectGenre)
+    console.log(selectGenre);
+
+    const {data: games, isLoading, error} = useGames(selectGenre, selectPlatform)
 
     return (
         <div>
