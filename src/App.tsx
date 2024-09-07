@@ -18,15 +18,15 @@ function App() {
 
     return (
         <ThemeProvider>
-            <div className={'gird-area'}>
-                <nav className="navbar">
+            <div>
+                <nav>
                     <Navbar onSearchGames={(value) => setSearchValue(value)}/>
                 </nav>
-                <aside className={"sidebar pt-3 pl-2"}>
+                <aside className={"pt-3 pl-2"}>
                    <Sidebar selectedGenre={selectGenre} onSelectGenre={(genre) => setSelectedGenre(genre)} />
                 </aside>
-                <main className={"main"}>
-                    <div className={"py-4 pl-2 flex gap-x-6"}>
+                <main>
+                    <div className={"py-4 flex gap-x-4  justify-center sm:justify-start sm:pl-9"}>
                         <FilteringByPlatform onSelectPlatform={(platform) => setSelectPlatform(platform)}/>
                         <SortGames onSelectedSortOrder={(value) => setSelectSortOrder(value)}/>
                     </div>

@@ -19,7 +19,7 @@ const Sidebar = ({onSelectGenre, selectedGenre}: Props) => {
             <SheetTrigger className={""} asChild>
                 <Button className={"p00"} variant={"link"}><AlignJustify className={"h-5 w-5"}/></Button>
             </SheetTrigger>
-            <SheetContent forceMount={true} className={"w-1/4 fixed"} side={"left"}>
+            <SheetContent forceMount={true} className={"w-2/5 md:w-1/4"} side={"left"}>
                 <div>
                     <h1 className={"mb-2 ml-4 text-2xl"}>Genres</h1>
                     <ul className={"list-none px-3"}>
