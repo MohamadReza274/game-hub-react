@@ -1,7 +1,7 @@
 import useData from "@/hooks/useData.ts";
 import {Genre} from "@/hooks/useGenres.ts";
 
-interface Platform {
+export interface Platform {
     id: number;
     name: string;
     slug: string;

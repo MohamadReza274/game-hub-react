@@ -10,6 +10,7 @@ interface Props {
 const GenreList = ({onSelectGenre, selectedGenre}: Props) => {
 
     const {data: genres} = useGenres();
+
     return (
         <div>
             <h1 className={"mb-2 ml-4 text-2xl"}>Genres</h1>
@@ -19,7 +20,7 @@ const GenreList = ({onSelectGenre, selectedGenre}: Props) => {
                              className={"w-8 h-8 rounded-full object-cover"}
                              alt={"genreImage"}/>
                         <Button
-                            className={`text-gray-800 dark:text-gray-300 ${genre.id == selectedGenre?.id && "font-bold tracking-wide text-gray-900 dark:text-gray-200"}`}
+                            className={`text-gray-800 dark:text-gray-300 ${genre.id === selectedGenre?.id && "font-bold tracking-wide text-gray-900 dark:text-gray-200"}`}
                             variant={"link"}
                             onClick={() => onSelectGenre(genre)}>
                             <h5>{genre.name}</h5>
