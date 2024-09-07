@@ -14,7 +14,7 @@ function App() {
     const [selectGenre, setSelectedGenre] = useState<Genre | null>(null);
     const [selectPlatform, setSelectPlatform] = useState<Platform | null>(null);
     const [selectSortOrder, setSelectSortOrder] = useState<string | null>(null);
-    const [serachValue, setSearchValue] = useState<string | null>(null);
+    const [searchValue, setSearchValue] = useState<string | null>(null);
 
     return (
         <ThemeProvider>
@@ -30,7 +30,8 @@ function App() {
                         <FilteringByPlatform onSelectPlatform={(platform) => setSelectPlatform(platform)}/>
                         <SortGames onSelectedSortOrder={(value) => setSelectSortOrder(value)}/>
                     </div>
-                    <GameContainer searchGames={serachValue} selectSortOrder={selectSortOrder} selectPlatform={selectPlatform}
+                    <GameContainer searchGames={searchValue} selectSortOrder={selectSortOrder}
+                                   selectPlatform={selectPlatform}
                                    selectGenre={selectGenre}/>
                 </main>
             </div>

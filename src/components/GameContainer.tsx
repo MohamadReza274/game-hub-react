@@ -8,12 +8,13 @@ interface Props {
     selectGenre: Genre | null;
     selectPlatform: Platform | null;
     selectSortOrder: string | null;
-    searchGames:string | null;
+    searchGames: string | null;
 }
 
-const GameContainer = ({selectGenre, selectPlatform, selectSortOrder,searchGames}: Props) => {
+const GameContainer = ({selectGenre, selectPlatform, selectSortOrder, searchGames}: Props) => {
 
-    const {data: games, isLoading, error} = useGames(selectGenre, selectPlatform, selectSortOrder,searchGames)
+    const {data: games, isLoading, error} = useGames(selectGenre, selectPlatform, selectSortOrder, searchGames)
+
 
     return (
         <div>
