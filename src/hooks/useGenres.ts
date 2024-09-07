@@ -1,4 +1,4 @@
-import useData from "@/hooks/useData.ts";
+import genres from "@/data/genres.ts";
 
 export interface Genre {
     id: string;
@@ -7,7 +7,11 @@ export interface Genre {
 }
 
 const UseGenres = () => {
-    return useData<Genre>("/genres");
+    // get static data from Data folder
+    return {data: genres,isLoading: false,error: null};
+
+    // Get Genres from API
+    // return useData<Genre>("/genres");
 }
 
 export default UseGenres;
