@@ -20,7 +20,7 @@ const GenreList = ({onSelectGenre, selectedGenre}: Props) => {
                              className={"w-8 h-8 rounded-full object-cover"}
                              alt={"genreImage"}/>
                         <Button
-                            className={`text-gray-800 dark:text-gray-300 ${genre.id === selectedGenre?.id && "font-bold tracking-wide text-gray-900 dark:text-gray-200"}`}
+                            className={`text-gray-800 text-wrap dark:text-gray-300 ${genre.id === selectedGenre?.id && "font-bold tracking-wide text-gray-900 dark:text-gray-200"}`}
                             variant={"link"}
                             onClick={() => onSelectGenre(genre)}>
                             <h5>{genre.name}</h5>
