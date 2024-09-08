@@ -1,5 +1,6 @@
-import useData from "@/hooks/useData.ts";
 import {Genre} from "@/hooks/useGenres.ts";
+import {useQuery} from "@tanstack/react-query";
+import apiClient from "@/services/api-client.ts";
 
 export interface Platform {
     id: number;
@@ -15,14 +16,16 @@ export interface Game {
     metacritic: number;
 }
 
-
-const useGames = (selectGenre?: Genre | null, selectPlatform?: Platform | null, selectSortOrder?: string | null, searchGames?: string | null) => useData<Genre>("/games", {
-    params: {
-        genres: selectGenre?.id,
-        platforms: selectPlatform?.id,
-        ordering: selectSortOrder,
-        search: searchGames,
-    }
-}, [selectGenre?.id, selectPlatform?.id, selectSortOrder, searchGames]);
+const useGames = (selectGenre?: Genre | null, selectPlatform?: Platform | null, selectSortOrder?: string | null, searchGames?: string | null) => useQuery<Game[]>({
+    queryKey: ["games", selectGenre?.name, selectPlatform?.name, selectSortOrder, searchGames],
+    queryFn: () => apiClient.get("/games", {
+        params: {
+            genres: selectGenre?.id,
+            platforms: selectPlatform?.id,
+            ordering: selectSortOrder,
+            search: searchGames,
+        }
+    }).then(res => res.data.results)
+})
 
 export default useGames;

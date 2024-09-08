@@ -13,27 +13,27 @@ interface Props {
 
 const GameContainer = ({selectGenre, selectPlatform, selectSortOrder, searchGames}: Props) => {
 
-    const {data: games, isLoading, error} = useGames(selectGenre, selectPlatform, selectSortOrder, searchGames)
+    const {data: games, isLoading, error} = useGames(selectGenre, selectPlatform, selectSortOrder, searchGames);
 
+    if (isLoading) {
+        return <div className={"flex flex-wrap gap-x-3 gap-y-4 justify-center"}>
+            {isLoading && [...Array(9).keys()].map((skeleton) => (<div className={""} key={skeleton}>
+                <Skeleton className={"h-[250px] w-[350px] rounded-xl my-1"}/>
+                <Skeleton className={"h-[25px] w-[350px] rounded-xl my-1"}/>
+                <Skeleton className={"h-[25px] w-[350px] rounded-xl"}/>
+            </div>))}
+        </div>
+    }
 
     return (
-        <div>
-            <div className={"flex flex-wrap gap-x-3 gap-y-4 justify-center"}>
-                {isLoading && games.map((skeleton) => (<div className={""} key={skeleton.id}>
-                    <Skeleton className={"h-[250px] w-[350px] rounded-xl my-1"}/>
-                    <Skeleton className={"h-[25px] w-[350px] rounded-xl my-1"}/>
-                    <Skeleton className={"h-[25px] w-[350px] rounded-xl"}/>
-                </div>))}
-            </div>
-            {error && <p className={"text-red-500 text-2xl p-2"}>{error}</p>}
-            <div className={"flex flex-col items-center sm:flex-row sm:justify-center flex-wrap gap-4"}>
-
+        <>
+            {error && <p className={"text-red-500 text-2xl p-2"}>{error.message}</p>}
+            <div className={"flex gap-4 flex-wrap justify-center"}>
                 {
-                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                    // @ts-expect-error
-                    games.map((game: Game) => (<GameCard key={game.id} game={game}/>))}
+
+                    games?.map((game: Game) => (<GameCard key={game.id} game={game}/>))}
             </div>
-        </div>
+        </>
     );
 };
 
