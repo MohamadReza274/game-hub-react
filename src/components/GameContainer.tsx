@@ -30,9 +30,9 @@ const GameContainer = ({selectGenre, selectPlatform, selectSortOrder, searchGame
             {error && <p className={"text-red-500 text-2xl p-2"}>{error.message}</p>}
             <div className={"flex gap-4 flex-wrap justify-center"}>
                 {
-
                     games?.map((game: Game) => (<GameCard key={game.id} game={game}/>))}
             </div>
+
         </>
     );
 };

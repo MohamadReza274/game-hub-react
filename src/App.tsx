@@ -18,25 +18,23 @@ function App() {
 
     return (
         <ThemeProvider>
-            <div>
-                <nav>
-                    <Navbar onSearchGames={(value) => setSearchValue(value)}/>
-                </nav>
-                <main className={"grid grid-cols-6"}>
-                    <aside className={"pt-3 pl-2 "}>
-                        <Sidebar selectedGenre={selectGenre} onSelectGenre={(genre) => setSelectedGenre(genre)}/>
-                    </aside>
-                    <div className={"col-span-6 sm:col-span-5"}>
-                        <div className={"py-4 flex gap-x-4 mb-4 justify-center sm:justify-start"}>
-                            <FilteringByPlatform onSelectPlatform={(platform) => setSelectPlatform(platform)}/>
-                            <SortGames onSelectedSortOrder={(value) => setSelectSortOrder(value)}/>
-                        </div>
-                        <GameContainer searchGames={searchValue} selectSortOrder={selectSortOrder}
-                                       selectPlatform={selectPlatform}
-                                       selectGenre={selectGenre}/>
+            <nav>
+                <Navbar onSearchGames={(value) => setSearchValue(value)}/>
+            </nav>
+            <main className={"grid grid-cols-6"}>
+                <aside className={"pt-3 pl-2 "}>
+                    <Sidebar selectedGenre={selectGenre} onSelectGenre={(genre) => setSelectedGenre(genre)}/>
+                </aside>
+                <div className={"col-span-6 sm:col-span-5"}>
+                    <div className={"py-4 flex gap-x-4 mb-4 justify-center sm:justify-start"}>
+                        <FilteringByPlatform onSelectPlatform={(platform) => setSelectPlatform(platform)}/>
+                        <SortGames onSelectedSortOrder={(value) => setSelectSortOrder(value)}/>
                     </div>
-                </main>
-            </div>
+                    <GameContainer searchGames={searchValue} selectSortOrder={selectSortOrder}
+                                   selectPlatform={selectPlatform}
+                                   selectGenre={selectGenre}/>
+                </div>
+            </main>
         </ThemeProvider>
     )
 }
