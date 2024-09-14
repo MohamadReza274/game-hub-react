@@ -25,12 +25,16 @@ const GameContainer = ({selectGenre, selectPlatform, selectSortOrder, searchGame
         </div>
     }
 
+    if (games?.results?.length === 0) {
+        return <p className={"text-3xl text-gray-800 dark:text-gray-300"}>There is no games.</p>
+    }
+
     return (
         <>
             {error && <p className={"text-red-500 text-2xl p-2"}>{error.message}</p>}
             <div className={"flex gap-4 flex-wrap justify-center"}>
                 {
-                    games?.map((game: Game) => (<GameCard key={game.id} game={game}/>))}
+                    games?.results.map((game: Game) => (<GameCard key={game.id} game={game}/>))}
             </div>
 
         </>

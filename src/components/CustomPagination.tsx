@@ -8,18 +8,10 @@ import {
     PaginationPrevious
 } from "@/components/ui/pagination.tsx";
 
-
-interface Props {
-    page:number;
-    pageSize:number;
-}
-
-const CustomPagination = ({page,page_size}:Props) => {
-
-    const pages = pages
+const CustomPagination = () => {
 
     return (
-        <Pagination  className={"mt-4"}>
+        <Pagination className={"mt-4"}>
             <PaginationContent>
                 <PaginationItem>
                     <PaginationPrevious href="#"/>
