@@ -24,7 +24,7 @@ const FilteringByPlatform = ({onSelectPlatform}: Props) => {
     if (error) return null;
 
     const handleChangePlatform = (value: number) => {
-        platforms.filter(platform => platform.id == value).map(p => {
+        platforms?.results.filter(platform => platform.id == value).map(p => {
             onSelectPlatform(p);
         });
 
@@ -40,7 +40,7 @@ const FilteringByPlatform = ({onSelectPlatform}: Props) => {
             <SelectContent>
                 <SelectGroup>
                     <SelectLabel>Platforms</SelectLabel>
-                    {platforms.map((platform) => (
+                    {platforms?.results.map((platform) => (
                         <SelectItem key={platform.id} value={platform.id.toString()}>{platform.name}</SelectItem>))}
                 </SelectGroup>
             </SelectContent>

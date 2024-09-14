@@ -1,14 +1,9 @@
 import {Genre} from "@/hooks/useGenres.ts";
 import {useQuery} from "@tanstack/react-query";
-import ApiClient from "@/services/api-client.ts";
+import ApiClient, {FetchResponseType} from "@/services/api-client.ts";
 import {Platform} from "@/hooks/usePlatforms.ts";
 
 const apiClient = new ApiClient<Game>("/games");
-
-interface ResponseType {
-    count: number;
-    results: Game[]
-}
 
 export interface Game {
     id: number;
@@ -20,7 +15,7 @@ export interface Game {
     page_size: number;
 }
 
-const useGames = (selectGenre?: Genre | null, selectPlatform?: Platform | null, selectSortOrder?: string | null, searchGames?: string | null) => useQuery<Game[], Error, ResponseType>({
+const useGames = (selectGenre?: Genre | null, selectPlatform?: Platform | null, selectSortOrder?: string | null, searchGames?: string | null) => useQuery<FetchResponseType<Game>>({
     queryKey: ["games", selectGenre?.name, selectPlatform?.name, selectSortOrder, searchGames],
     queryFn: () => apiClient.getAll({
         params: {
