@@ -7,6 +7,7 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select.tsx";
+import useSortOrderStore from "@/store/useSortOrderStore.ts";
 
 const sortOptions = [
     {value: "_", label: "Relevance"},
@@ -17,14 +18,11 @@ const sortOptions = [
     {value: "-rating", label: "Average rating"}
 ]
 
-interface Props {
-    onSelectedSortOrder: (sort: string) => void;
-}
-
-const SortGames = ({onSelectedSortOrder}: Props) => {
+const SortGames = () => {
+    const setSortOrder = useSortOrderStore(state => state.setSortOrder);
     return (
         <Select onValueChange={(value) => {
-            onSelectedSortOrder(value)
+            setSortOrder(value)
         }}>
             <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Sort by"/>

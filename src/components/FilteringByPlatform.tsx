@@ -1,4 +1,4 @@
-import usePlatforms, {Platform} from "@/hooks/usePlatforms.ts";
+import usePlatforms from "@/hooks/usePlatforms.ts";
 import Spinner from "@/components/Spinner.tsx";
 import {
     Select,
@@ -9,14 +9,12 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select.tsx";
+import usePlatformStore from "@/store/usePlatformStore.ts";
 
-interface Props {
-    onSelectPlatform: (platform: Platform) => void;
-}
-
-const FilteringByPlatform = ({onSelectPlatform}: Props) => {
+const FilteringByPlatform = () => {
 
     const {data: platforms, isLoading, error} = usePlatforms();
+    const setPlatform = usePlatformStore(state => state.setPlatform)
 
     if (isLoading) {
         return <Spinner/>;
@@ -25,7 +23,7 @@ const FilteringByPlatform = ({onSelectPlatform}: Props) => {
 
     const handleChangePlatform = (value: number) => {
         platforms?.results.filter(platform => platform.id == value).map(p => {
-            onSelectPlatform(p);
+            setPlatform(p);
         });
 
     }

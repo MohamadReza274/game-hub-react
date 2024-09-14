@@ -1,19 +1,10 @@
 import useGames, {Game} from "@/hooks/useGames.ts";
 import GameCard from "@/components/GameCard.tsx";
 import {Skeleton} from "@/components/ui/skeleton.tsx";
-import {Genre} from "@/hooks/useGenres.ts";
-import {Platform} from "@/hooks/usePlatforms.ts";
 
-interface Props {
-    selectGenre: Genre | null;
-    selectPlatform: Platform | null;
-    selectSortOrder: string | null;
-    searchGames: string | null;
-}
+const GameContainer = () => {
 
-const GameContainer = ({selectGenre, selectPlatform, selectSortOrder, searchGames}: Props) => {
-
-    const {data: games, isLoading, error} = useGames(selectGenre, selectPlatform, selectSortOrder, searchGames);
+    const {data: games, isLoading, error} = useGames();
 
     if (isLoading) {
         return <div className={"flex flex-wrap gap-x-3 gap-y-4 justify-center"}>

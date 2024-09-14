@@ -2,16 +2,16 @@ import useGenres, {Genre} from "@/hooks/useGenres.ts";
 import getCroppedImage from "@/services/GetCroppedImage.ts";
 import {Button} from "@/components/ui/button.tsx";
 import Spinner from "@/components/Spinner.tsx";
+import useGenreStore from "@/store/useGenreStore.ts";
 
 interface Props {
-    onSelectGenre: (genre: Genre) => void;
-    selectedGenre: Genre | null;
     onOpenDialog?: (open: boolean) => void;
 }
 
-const GenreList = ({onSelectGenre, selectedGenre, onOpenDialog}: Props) => {
+const GenreList = ({onOpenDialog}: Props) => {
 
     const {data: genres, isLoading} = useGenres();
+    const genreStore = useGenreStore();
 
     if (isLoading) {
         return (<Spinner/>)
@@ -26,10 +26,10 @@ const GenreList = ({onSelectGenre, selectedGenre, onOpenDialog}: Props) => {
                              className={"w-8 h-8 rounded-full object-cover"}
                              alt={"genreImage"}/>
                         <Button
-                            className={`text-gray-800 text-wrap dark:text-gray-300 ${genre.id === selectedGenre?.id && "font-bold tracking-wide text-gray-900 dark:text-gray-200"}`}
+                            className={`text-gray-800 text-wrap dark:text-gray-300 ${genre.id === genreStore.genre?.id && "font-bold tracking-wide text-gray-900 dark:text-gray-200"}`}
                             variant={"link"}
                             onClick={() => {
-                                onSelectGenre(genre);
+                                genreStore.setGenre(genre);
                                 if (onOpenDialog) {
                                     onOpenDialog(false);
                                 }
