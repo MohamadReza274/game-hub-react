@@ -1,14 +1,9 @@
 import {Genre} from "@/hooks/useGenres.ts";
 import {useQuery} from "@tanstack/react-query";
 import ApiClient from "@/services/api-client.ts";
+import {Platform} from "@/hooks/usePlatforms.ts";
 
 const apiClient = new ApiClient<Game>("/games");
-
-export interface Platform {
-    id: number;
-    name: string;
-    slug: string;
-}
 
 interface ResponseType {
     count: number;

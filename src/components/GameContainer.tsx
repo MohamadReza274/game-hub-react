@@ -26,7 +26,7 @@ const GameContainer = ({selectGenre, selectPlatform, selectSortOrder, searchGame
     }
 
     if (games?.results?.length === 0) {
-        return <p className={"text-3xl text-gray-800 dark:text-gray-300"}>There is no games.</p>
+        return <p className={"text-3xl text-gray-600 dark:text-gray-300"}>There is no games.</p>
     }
 
     return (
