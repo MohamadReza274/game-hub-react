@@ -1,8 +1,8 @@
-import {Platform} from "@/hooks/useGames.ts";
 import {FaWindows, FaPlaystation, FaXbox, FaApple, FaLinux, FaAndroid} from "react-icons/fa"
 import {SiNintendo} from "react-icons/si";
 import {MdPhoneIphone} from "react-icons/md";
 import {BsGlobe} from "react-icons/bs";
+import {Platform} from "@/hooks/usePlatforms.ts";
 
 interface Props {
     platform: Platform;

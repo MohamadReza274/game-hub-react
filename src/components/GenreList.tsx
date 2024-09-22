@@ -2,7 +2,8 @@ import useGenres, {Genre} from "@/hooks/useGenres.ts";
 import getCroppedImage from "@/services/GetCroppedImage.ts";
 import {Button} from "@/components/ui/button.tsx";
 import Spinner from "@/components/Spinner.tsx";
-import useGenreStore from "@/store/useGenreStore.ts";
+import useStore from "@/store.ts";
+;
 
 interface Props {
     onOpenDialog?: (open: boolean) => void;
@@ -11,7 +12,8 @@ interface Props {
 const GenreList = ({onOpenDialog}: Props) => {
 
     const {data: genres, isLoading} = useGenres();
-    const genreStore = useGenreStore();
+    const setGenre = useStore((state) => state.setGenre);
+    const genre_ = useStore((state) => state.gameQuery.genre);
 
     if (isLoading) {
         return (<Spinner/>)
@@ -26,10 +28,10 @@ const GenreList = ({onOpenDialog}: Props) => {
                              className={"w-8 h-8 rounded-full object-cover"}
                              alt={"genreImage"}/>
                         <Button
-                            className={`text-gray-800 text-wrap dark:text-gray-300 ${genre.id === genreStore.genre?.id && "font-bold tracking-wide text-gray-900 dark:text-gray-200"}`}
+                            className={`text-gray-800 text-wrap dark:text-gray-300 ${genre.id === genre_?.id && "font-bold tracking-wide text-gray-900 dark:text-gray-200"}`}
                             variant={"link"}
                             onClick={() => {
-                                genreStore.setGenre(genre);
+                                setGenre(genre);
                                 if (onOpenDialog) {
                                     onOpenDialog(false);
                                 }

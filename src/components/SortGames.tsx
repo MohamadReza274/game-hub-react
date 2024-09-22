@@ -7,7 +7,7 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select.tsx";
-import useSortOrderStore from "@/store/useSortOrderStore.ts";
+import useStore from "@/store.ts";
 
 const sortOptions = [
     {value: "_", label: "Relevance"},
@@ -19,7 +19,7 @@ const sortOptions = [
 ]
 
 const SortGames = () => {
-    const setSortOrder = useSortOrderStore(state => state.setSortOrder);
+    const setSortOrder = useStore(state => state.setSortOrder);
     return (
         <Select onValueChange={(value) => {
             setSortOrder(value)

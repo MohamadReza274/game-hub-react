@@ -9,12 +9,13 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select.tsx";
-import usePlatformStore from "@/store/usePlatformStore.ts";
+import useStore from "@/store.ts";
+
 
 const FilteringByPlatform = () => {
 
     const {data: platforms, isLoading, error} = usePlatforms();
-    const setPlatform = usePlatformStore(state => state.setPlatform)
+    const setPlatform = useStore(state => state.setPlatform)
 
     if (isLoading) {
         return <Spinner/>;

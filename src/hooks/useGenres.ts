@@ -10,11 +10,6 @@ export interface Genre {
     image_background: string;
 }
 
-// interface GenreResponse {
-//     count: number;
-//     results: Genre[];
-// }
-
 const useGenres = () => {
     // get static data from Data folder
 
@@ -23,7 +18,7 @@ const useGenres = () => {
         queryFn: apiClient.getAll,
         // Time to reFetch data from api
         staleTime: 24 * 60 * 60 * 1000, // 24h
-        initialData: {count: genres.length, results: genres}
+        initialData: {count: genres.length, results: genres,next:null}
     });
 
     // Get Genres from API

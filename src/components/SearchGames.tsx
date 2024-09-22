@@ -2,12 +2,12 @@ import {Input} from "@/components/ui/input.tsx";
 import {useRef} from "react";
 import {Button} from "@/components/ui/button.tsx";
 import {Search} from "lucide-react";
-import useSearchStore from "@/store/useSearchStore.ts";
+import useStore from "@/store.ts";
 
 
 const SearchGames = () => {
     const inputRef = useRef<HTMLInputElement>(null);
-    const setSearch = useSearchStore(state => state.setSearch)
+    const setSearch = useStore(state => state.setSearchText)
     return (
         <form className="w-full flex gap-x-1" onSubmit={(e) => {
             e.preventDefault()
