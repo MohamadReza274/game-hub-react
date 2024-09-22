@@ -1,4 +1,4 @@
-import {useQuery} from "@tanstack/react-query";
+import {useInfiniteQuery} from "@tanstack/react-query";
 import ApiClient, {FetchResponseType} from "@/services/api-client.ts";
 import {Platform} from "@/hooks/usePlatforms.ts";
 import useGenreStore from "@/store/useGenreStore.ts";
@@ -23,16 +23,21 @@ const useGames = () => {
     const platform = usePlatformStore(state => state.platform);
     const sortOrder = useSortOrderStore(state => state.sort)
     const search = useSearchStore(state => state.search)
-    return useQuery<FetchResponseType<Game>>({
+    return useInfiniteQuery<FetchResponseType<Game>>({
         queryKey: ["games", genre?.name, platform?.name, sortOrder, search],
-        queryFn: () => apiClient.getAll({
+        queryFn: ({pageParam}) => apiClient.getAll({
             params: {
                 genres: genre?.id,
                 parent_platforms: platform?.id,
                 ordering: sortOrder,
-                search: search
+                search: search,
+                page: pageParam
             }
-        })
+        }),
+        initialPageParam: 1,
+        getNextPageParam: (lastPage, allPages) => {
+            return lastPage.next ? allPages.length + 1 : undefined;
+        }
     })
 }
 
