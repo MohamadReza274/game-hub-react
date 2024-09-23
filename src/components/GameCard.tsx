@@ -1,9 +1,9 @@
-import {Game} from "@/hooks/useGames.ts";
 import {Card, CardFooter, CardHeader} from "@/components/ui/card.tsx";
 import GamePlatformIcons from "@/components/GamePlatformIcons.tsx";
 import CriticScore from "@/components/CriticScore.tsx";
 import getCroppedImage from "@/services/GetCroppedImage.ts";
 import {Link} from "react-router-dom";
+import {Game} from "@/types";
 
 interface GameProps {
     game: Game;

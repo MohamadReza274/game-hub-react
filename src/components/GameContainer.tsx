@@ -1,9 +1,10 @@
-import useGames, {Game} from "@/hooks/useGames.ts";
+import useGames from "@/hooks/useGames.ts";
 import GameCard from "@/components/GameCard.tsx";
 import {Skeleton} from "@/components/ui/skeleton.tsx";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Spinner from "@/components/Spinner.tsx";
+import {Game} from "@/types";
 
 const GameContainer = () => {
 

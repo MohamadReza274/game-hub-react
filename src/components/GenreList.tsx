@@ -1,8 +1,9 @@
-import useGenres, {Genre} from "@/hooks/useGenres.ts";
+import useGenres from "@/hooks/useGenres.ts";
 import getCroppedImage from "@/services/GetCroppedImage.ts";
 import {Button} from "@/components/ui/button.tsx";
 import Spinner from "@/components/Spinner.tsx";
 import useStore from "@/store.ts";
+import {Genre} from "@/types";
 ;
 
 interface Props {

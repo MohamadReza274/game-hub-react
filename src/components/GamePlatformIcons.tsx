@@ -2,7 +2,7 @@ import {FaWindows, FaPlaystation, FaXbox, FaApple, FaLinux, FaAndroid} from "rea
 import {SiNintendo} from "react-icons/si";
 import {MdPhoneIphone} from "react-icons/md";
 import {BsGlobe} from "react-icons/bs";
-import {Platform} from "@/hooks/usePlatforms.ts";
+import {Platform} from "@/types";
 
 interface Props {
     platform: Platform;
