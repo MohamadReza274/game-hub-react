@@ -8,7 +8,7 @@ interface Props {
 
 const GameFeatures = ({game}: Props) => {
     return (
-        <dl className={"grid grid-cols-1 sm:grid-cols-2 p-2"}>
+        <dl className={"grid grid-cols-2 p-2"}>
             <GameItemDefinition term={"Platforms: "}>
                 {game.parent_platforms?.map(({platform}) => (<p key={platform.id}>{platform.name}</p>))}
             </GameItemDefinition>

@@ -3,6 +3,7 @@ import {MoonIcon, SunIcon} from "lucide-react";
 import {useTheme} from "@/components/theme-provider.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import SearchGames from "@/components/SearchGames.tsx";
+import {Link} from "react-router-dom";
 
 
 const Navbar = () => {
@@ -10,7 +11,9 @@ const Navbar = () => {
     return (
         <nav className="flex justify-between items-center w-full p-3">
             <div className={"flex gap-x-2 items-center"}>
-                <img src={Logo} alt={"Logo"} className={"w-8 h-8 rounded-full"}/>
+                <Link to={"/"}>
+                    <img src={Logo} alt={"Logo"} className={"w-8 h-8 rounded-full object-cover"} />
+                </Link>
                 <SearchGames/>
             </div>
             <Button className={"hidden dark:flex"} onClick={() => setTheme("light")} variant={"link"}><SunIcon
