@@ -1,6 +1,5 @@
 import {create} from "zustand";
-import {Genre} from "@/hooks/useGenres.ts";
-import {Platform} from "@/hooks/usePlatforms.ts";
+import {Genre, Platform} from "@/types";
 
 interface GameType {
     searchText?: string;
