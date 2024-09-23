@@ -20,7 +20,7 @@ const GameContainer = () => {
         </div>
     }
 
-    // if (games?.results?.length === 0) {
+    // if (noGames) {
     //     return <p className={"text-3xl text-gray-600 dark:text-gray-300"}>There is no games.</p>
     // }
 

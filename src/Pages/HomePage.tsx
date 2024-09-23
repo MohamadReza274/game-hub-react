@@ -16,7 +16,7 @@ const HomePage = () => {
             <div className={"col-span-6 sm:col-span-5"}>
                 <div className={"py-4 flex flex-col gap-x-4 mb-4 justify-center sm:justify-start"}>
                     {(genre?.name || platform?.name) &&
-                        <p className={"text-3xl text-gray-700 dark:text-gray-200 font-bold"}>{genre?.name} {genre && "/"} {platform?.name} Games</p>}
+                        <p className={"text-3xl ml-16 sm:ml-8 text-gray-700 dark:text-gray-200 font-bold"}>{genre?.name} {genre && "/"} {platform?.name} Games</p>}
                     <div className={"flex gap-x-4 mt-2 sm:ml-16 mx-auto"}>
                         <FilteringByPlatform/>
                         <SortGames/>
