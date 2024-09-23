@@ -15,10 +15,11 @@ const GameCard = ({game}: GameProps) => {
             <Link to={`/games/${game.id}`}>
                 <img className={"w-full max-h-[250px] h-full"} src={getCroppedImage(game.background_image)}
                      alt={"Game Image"}/>
+
+                <CardHeader>
+                    <h2 className={"text-2xl"}>{game.name}</h2>
+                </CardHeader>
             </Link>
-            <CardHeader>
-                <h2 className={"text-2xl"}>{game.name}</h2>
-            </CardHeader>
             <CardFooter className={"flex justify-between"}>
                 <div className={'flex mx-1 text-gray-500 gap-x-2'}>
                     {game.parent_platforms?.map(({platform}) => {

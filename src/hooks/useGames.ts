@@ -13,6 +13,7 @@ export interface Game {
     metacritic: number;
     page: number;
     page_size: number;
+    description_raw:string;
 }
 
 const useGames = () => {
