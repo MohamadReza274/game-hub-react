@@ -1,25 +1,6 @@
-interface Game {
-    id: number;
-    name: string;
-    background_image: string;
-    parent_platforms: { platform: Platform }[];
-    metacritic: number;
-    page: number;
-    page_size: number;
-    description_raw: string;
-}
+import Game from './Game';
+import Platform from './Platform';
+import Genre from './Genre';
+import Publisher from "@/types/Publisher.ts";
 
-interface Platform {
-    id: number;
-    name: string;
-    slug: string;
-}
-
-interface Genre {
-    id: number;
-    name: string;
-    image_background: string;
-}
-
-
-export type {Game, Platform, Genre};
+export type {Game, Platform, Genre, Publisher};
