@@ -19,7 +19,7 @@ const ExpandableText = ({children}: Props) => {
     }
     const summary = isExpand ? children : children.substring(0, limit) + "..."
     return (
-        <p>
+        <p className={"text-xl"}>
             {summary}
             <button onClick={() => setExpand(!isExpand)}
                     className={"rounded py-2 px-1 ml-2 underline font-bold"}>{isExpand ? "Show Less" : "Read More"}</button>

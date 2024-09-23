@@ -3,6 +3,7 @@ import useGame from "@/hooks/useGame.ts";
 import ExpandableText from "@/components/ExpandableText.tsx";
 import Spinner from "@/components/Spinner.tsx";
 import GameFeatures from "@/components/GameFeatures.tsx";
+import GameTrailer from "@/components/GameTrailer.tsx";
 
 
 const GameDetails = () => {
@@ -18,6 +19,7 @@ const GameDetails = () => {
             <h1 className={"text-3xl font-bold mb-2"}>{game.name}</h1>
             <ExpandableText>{game.description_raw}</ExpandableText>
             <GameFeatures game={game}/>
+            <GameTrailer gameId={game.id}/>
         </div>
     );
 };
